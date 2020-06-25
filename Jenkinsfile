@@ -13,8 +13,7 @@ node{
         
        }
        stage('upload-nexus'){
-	       //nexusArtifactUploader credentialsId: 'nexus', groupId: 'javax', nexusUrl: '192.168.0.14:31071', nexusVersion: 'nexus3', protocol: 'http', repository: 'snapshot', version: '7.0'
-	     configFileProvider([configFile(fileId: '84f1ff62-a39d-4e26-b806-05b65fb736d6', targetLocation: 'target/javaee7-simple-sample.war')]) 
+	       nexusArtifactUploader artifacts: [[artifactId: 'javaee7-simple-sample', classifier: '', file: 'target/javaee7-simple-sample.war', type: 'war']], credentialsId: 'nexus', groupId: 'javax', nexusUrl: '192.168.0.14', nexusVersion: 'nexus3', protocol: 'http', repository: 'http://192.168.0.14:31071/repository/release/', version: '7.0'
    
       }	
   }
