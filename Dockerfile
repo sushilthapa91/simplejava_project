@@ -13,7 +13,7 @@ FROM tomcat:8.0
 
 MAINTAINER cusel
 
-RUN rm -rf /usr/local/tomcat/webapps/*
+#RUN rm -rf /usr/local/tomcat/webapps/*
 
 COPY target/javaee7-simple-sample.war /usr/local/tomcat/webapps/javaee7-simple-sample.war
 
