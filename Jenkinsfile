@@ -17,7 +17,7 @@ node{
       }
 	stage('build-and-publish-dockerhub'){
 	      sh "docker build -t sushilth91/tomcat -f Dockerfile ."
-	      withDockerRegistry(credentialsId: 'dockerhubid'){ 
+	      withDockerRegistry(credentialsId: 'dockerhub'){ 
 		sh "docker push sushilth91/tomcat"
 		}
       }
