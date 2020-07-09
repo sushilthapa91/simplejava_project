@@ -14,5 +14,13 @@ node{
        }
        stage('upload-nexus'){
 	      nexusArtifactUploader artifacts: [[artifactId: 'javaee7-simple-sample', classifier: '', file: 'target/javaee7-simple-sample.war', type: 'war']], credentialsId: 'nexus', groupId: 'javax', nexusUrl: '192.168.0.13:32248', nexusVersion: 'nexus3', protocol: 'http', repository: 'release', version: '7.0'   
-      }	
+      }
+	stage('build-and-publish-dockerhub'){
+	      sh "docker build -t sushilth91/tomcat -f Dockerfile ."
+	      withDockerRegistry(credentialsId: 'dockerhubid'){ 
+		sh "docker push sushilth91/tomcat"
+		}
+      }
+		
+	      
   }
